@@ -96,3 +96,14 @@ tar -xvf rtl8367b.tar.gz
 # 复制dts设备树文件到指定目录下
 cp -a $GITHUB_WORKSPACE/configfiles/dts/rk3568/* target/linux/rockchip/dts/rk3568/
 cp -a $GITHUB_WORKSPACE/configfiles/dts/rk3588/* target/linux/rockchip/dts/rk3588/
+
+
+# ============ GAS-0218 (SecurityGuard RK3568 5-port) ============
+echo -e "\ndefine Device/securityguard_gas0218
+\$(call Device/Legacy/rk3568,\$(1))
+  DEVICE_VENDOR := SecurityGuard
+  DEVICE_MODEL := GAS-0218
+  DEVICE_DTS := rk3568/rk3568-securityguard-gas0218
+  DEVICE_PACKAGES += kmod-r8169 kmod-phy-motorcomm kmod-nvme kmod-ata-ahci-dwc kmod-hwmon-pwmfan kmod-thermal
+endef
+TARGET_DEVICES += securityguard_gas0218" >> target/linux/rockchip/image/legacy.mk

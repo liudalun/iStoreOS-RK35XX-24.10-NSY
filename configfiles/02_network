@@ -63,6 +63,9 @@ rockchip_setup_interfaces()
 	lyt,t88m)
 		ucidef_set_interfaces_lan_wan 'eth1 eth2 eth3' 'eth0'
 		;;
+	securityguard,rk3568-ddr4-v10)
+		ucidef_set_interfaces_lan_wan 'eth1 eth2 eth3 eth4' 'eth0'
+		;;
 	roceos,k60pro)
 		ucidef_set_interfaces_lan_wan 'eth1 eth2 eth3 eth4 eth5' 'eth0'
 		;;
@@ -120,7 +123,8 @@ rockchip_setup_macs()
 	nsy,g16-plus|\
 	bdy,g18-pro|\
 	lunzn,fastrhino-r66s|\
-	lunzn,fastrhino-r68s)
+	lunzn,fastrhino-r68s|
+	securityguard,rk3568-ddr4-v10)
 		wan_mac=$(macaddr_generate_from_mmc_cid mmcblk0)
 		lan_mac=$(macaddr_add "$wan_mac" 1)
 		;;

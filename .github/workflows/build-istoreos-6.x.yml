@@ -11,6 +11,9 @@ on:
   schedule:
    - cron: 0 16 * * *
 
+permissions:
+  contents: write
+
 env:
   REPO_URL: https://github.com/istoreos/istoreos
   # REPO_BRANCH: main
